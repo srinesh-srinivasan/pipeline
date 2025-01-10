@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+  
+  pre_build:
+    commands:
+      - echo "Running tests..."
+      - npm run lint
+  
+  build:
+    commands:
+      - echo "Building the application..."
+      - npm run build
+      
+  post_build:
+    commands:
+      - echo "Build completed successfully!"
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'dist'
